@@ -1,3 +1,22 @@
+def get_sample_size(power, p1, p2, cl, max_n=1000000):
+    n = 1 
+    while n <= max_n:
+        tmp_power = get_power(n, p1, p2, cl)
+
+        if tmp_power >= power: 
+            return n 
+        else: 
+            n = n + 100
+
+    return "Increase Max N Value"
+
+
+
+
+
+
+
+
 # Merge the demographics and purchase data to only include paywall views
 purchase_data = demographics_data.merge(paywall_views, how='inner', on=['uid'])
                             
