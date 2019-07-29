@@ -1,0 +1,13 @@
+# Merge the demographics and purchase data to only include paywall views
+purchase_data = demographics_data.merge(paywall_views, how='inner', on=['uid'])
+                            
+# Find the conversion rate
+conversion_rate = (sum(purchase_data.purchase) / purchase_data.purchase.count())
+
+# Desired Power: 0.8
+# CL: 0.90
+# Percent Lift: 0.1
+p2 = conversion_rate * (1 + 0.1)
+sample_size = get_sample_size(0.8, conversion_rate, p2, 0.90)
+print(sample_size)
+
